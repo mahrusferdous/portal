@@ -8,28 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
-import portal.ee.domain.dao.JobHistoryDao;
+import portal.ee.domain.dao.EmployeesDao;
+import portal.ee.domain.entity.Employees;
 import portal.ee.domain.entity.JobHistory;
 
-//dao layer is for create insert delete update 
-//without the service jobhistroydaoimpl is a simple java class
 @Service
-public class JobHistoryDaoImpl implements JobHistoryDao {
+public class EmployeesDaoImpl implements EmployeesDao{
 	
-	//If no autowired, it will be null
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 
 	@Override
-	public List<JobHistory> findAllJobHistory() {
+	public List<Employees> findAllEmployees() {
 		Session currentSession = hibernateTemplate.getSessionFactory().getCurrentSession();
 		
-		String sql = "select * from JOB_HISTROY";
+		String sql = "select * from EMPLOYEES";
 		SQLQuery query = currentSession.createSQLQuery(sql);
-		query.addEntity(JobHistory.class);
-		List<JobHistory> results = query.list();
+		query.addEntity(Employees.class);
+		List<Employees> results = query.list();
 		
 		return results;
 	}
-
 }

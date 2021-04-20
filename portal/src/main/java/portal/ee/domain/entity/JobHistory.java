@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity(name = "jobHistory")
-@Table(name = "JOB_HISTORY", schema = "hr")
+@Table(name = "JOB_HISTORY", schema = "HR")
 public class JobHistory {
 	
 	@Id
@@ -64,6 +64,5 @@ public class JobHistory {
 	public void setDepId(int depId) {
 		this.depId = depId;
 	}
-	
 	
 }
