@@ -1,5 +1,7 @@
 package portal.ee.domain.entity;
 
+import java.time.LocalDate;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,10 +20,10 @@ public class JobHistory {
 	private int employeeId;
 	
 	@Column(name = "START_DATE")
-	private String startDate;
+	private LocalDate startDate;
 	
 	@Column(name = "END_DATE")
-	private String endDate;
+	private LocalDate endDate;
 	
 	@Column(name = "JOB_ID")
 	private String jobId;
@@ -37,19 +39,19 @@ public class JobHistory {
 		this.employeeId = employeeId;
 	}
 
-	public String getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -68,5 +70,5 @@ public class JobHistory {
 	public void setDepId(int depId) {
 		this.depId = depId;
 	}
-	
+
 }
