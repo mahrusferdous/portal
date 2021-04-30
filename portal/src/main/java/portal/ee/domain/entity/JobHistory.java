@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import javax.annotation.processing.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.presistence.GeneratedValue;
-import javax.presistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
