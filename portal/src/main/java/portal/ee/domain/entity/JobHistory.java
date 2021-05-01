@@ -2,7 +2,6 @@ package portal.ee.domain.entity;
 
 import java.time.LocalDate;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +28,7 @@ public class JobHistory {
 	private String jobId;
 	
 	@Column(name = "DEPARTMENT_ID")
-	private int depId;
+	private int deptId;
 
 	public int getEmployeeId() {
 		return employeeId;
@@ -63,12 +62,12 @@ public class JobHistory {
 		this.jobId = jobId;
 	}
 
-	public int getDepId() {
-		return depId;
+	public int getDeptId() {
+		return deptId;
 	}
 
-	public void setDepId(int depId) {
-		this.depId = depId;
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
 	}
 
 }

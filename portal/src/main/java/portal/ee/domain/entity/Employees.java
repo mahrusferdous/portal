@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 //Representation of the database Table
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 @Table(name = "EMPLOYEES", schema = "HR")
 public class Employees {
 	
+	@Id
 	@Column(name = "EMPLOYEE_ID")
 	private int employeeId;
 	

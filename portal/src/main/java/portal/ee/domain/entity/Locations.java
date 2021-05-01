@@ -2,12 +2,14 @@ package portal.ee.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity(name = "locations")
 @Table(name = "LOCATIONS", schema = "HR")
 public class Locations {
 
+	@Id
 	@Column(name = "LOCATION_ID")
 	private int locationId;
 	

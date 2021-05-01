@@ -19,22 +19,32 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 ">
 
 	<!-- 1. Datasourse: is responsible to create the database connection(portailDataSourse) 
-		1. a. hikariConfig bean provides the configuration for db connectivity 
-		2. SessionFactory is responsible for managing the session 
-		3. ProtalTxManager is responsible for managing the transaction the (transaction meaning do all or do nothing) 
-		4. hibernateTemplate will be used to write and execute the query for the session-->
+		1. a. hikariConfig bean provides the configuration for db connectivity 2. 
+		SessionFactory is responsible for managing the session 3. ProtalTxManager 
+		is responsible for managing the transaction the (transaction meaning do all 
+		or do nothing) 4. hibernateTemplate will be used to write and execute the 
+		query for the session -->
 
 	<context:annotation-config />
 	<context:component-scan base-package="portal.ee"></context:component-scan>
 	<tx:annotation-driven />
 	<mvc:annotation-driven />
-	
+
 	<bean name="hibernateTemplate"
 		class="org.springframework.orm.hibernate5.HibernateTemplate"
 		p:sessionFactory-ref="sessionFactory" />
 
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+	</bean>
+
 	<!-- Transaction Management -->
-	<bean id="portalTxManager"
+	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -51,9 +61,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		<property name="idleTimeout" value="30000" />
 		<property name="dataSourceProperties">
 			<props>
-				<prop key="url">jdbc:oracle:thin:@//127.0.0.1:30000/ORCLPDB1</prop>
-				<prop key="user">appuser</prop>
-				<prop key="password">appuser</prop>
+				<prop key="url">${db.url}</prop>
+				<prop key="user">${db.username}</prop>
+				<prop key="password">${db.password}</prop>
 			</props>
 		</property>
 	</bean>
@@ -70,7 +80,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
 		p:dataSource-ref="portalDataSource">
 		<property name="packagesToScan"
-			value="package portal.ee.domain.entity" />
+			value="portal.ee.domain.entity" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</prop>

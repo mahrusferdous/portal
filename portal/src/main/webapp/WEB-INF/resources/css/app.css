@@ -1,0 +1,12 @@
+#job_history_tbl {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12;
+	font-family: sans-serif;
+	color: orange;
+}
+
+table, th, td {
+	border-style: inset;
+}
