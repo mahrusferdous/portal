@@ -4,17 +4,20 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 //Representation of the database Table
 //ORM -> () 
 
-@Entity(name = "EMPLOYEES")
+@Entity(name = "employees")
 @Table(name = "EMPLOYEES", schema = "HR")
 public class Employees {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "EMPLOYEE_ID")
 	private int employeeId;
 	
@@ -28,7 +31,7 @@ public class Employees {
 	private String email;
 	
 	@Column(name= "PHONE_NUMBER")
-	private int phoneNumber;
+	private String phoneNumber;
 	
 	@Column(name= "HIRE_DATE")
 	private LocalDateTime hireDate;
@@ -37,16 +40,16 @@ public class Employees {
 	private String jobId;
 	
 	@Column(name= "SALARY")
-	private double salary;
+	private Integer salary;
 	
 	@Column(name= "COMMISSION_PCT")
-	private double commisionPct;
+	private Double commisionPct;
 	
 	@Column(name= "MANAGER_ID")
-	private int managerId;
+	private Integer managerId;
 	
 	@Column(name= "DEPARTMENT_ID")
-	private int deptId;
+	private Integer deptId;
 
 	public int getEmployeeId() {
 		return employeeId;
@@ -80,11 +83,11 @@ public class Employees {
 		this.email = email;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -104,36 +107,36 @@ public class Employees {
 		this.jobId = jobId;
 	}
 
-	public double getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 
-	public double getCommisionPct() {
+	public Double getCommisionPct() {
 		return commisionPct;
 	}
 
-	public void setCommisionPct(double commisionPct) {
+	public void setCommisionPct(Double commisionPct) {
 		this.commisionPct = commisionPct;
 	}
 
-	public int getManagerId() {
+	public Integer getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
 
-	public int getDeptId() {
+	public Integer getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(int deptId) {
+	public void setDeptId(Integer deptId) {
 		this.deptId = deptId;
 	}
-	
+
 }

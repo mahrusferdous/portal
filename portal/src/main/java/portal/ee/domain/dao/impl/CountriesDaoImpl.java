@@ -2,6 +2,8 @@ package portal.ee.domain.dao.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,12 @@ public class CountriesDaoImpl implements CountriesDao {
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 
+	@Transactional
 	@Override
 	public List<Countries> findAllCountries() {
 		Session currentSession = hibernateTemplate.getSessionFactory().getCurrentSession();
 		
-		String sql = "select * from Countries";
+		String sql = "select * from HR.COUNTRIES";
 		SQLQuery query = currentSession.createSQLQuery(sql);
 		query.addEntity(Countries.class);
 		List<Countries> results = query.list();

@@ -2,6 +2,8 @@ package portal.ee.domain.dao.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,12 @@ public class LocationsDaoImpl implements LocationsDao {
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 
+	@Transactional
 	@Override
 	public List<Locations> findAllLocations() {
 		Session currentSession = hibernateTemplate.getSessionFactory().getCurrentSession();
 		
-		String sql = "select * from LOCATIONS";
+		String sql = "select * from HR.LOCATIONS";
 		SQLQuery query = currentSession.createSQLQuery(sql);
 		query.addEntity(Locations.class);
 		List<Locations> results = query.list();

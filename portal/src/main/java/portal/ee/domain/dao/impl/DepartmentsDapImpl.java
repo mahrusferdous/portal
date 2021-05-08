@@ -2,6 +2,8 @@ package portal.ee.domain.dao.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,12 @@ public class DepartmentsDapImpl implements DepartmentsDao {
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 
+	@Transactional
 	@Override
 	public List<Departments> findAllDepartments() {
 		Session currentSession = hibernateTemplate.getSessionFactory().getCurrentSession();
 		
-		String sql = "select * from DEPARTMENTS";
+		String sql = "select * from HR.DEPARTMENTS";
 		SQLQuery query = currentSession.createSQLQuery(sql);
 		query.addEntity(Departments.class);
 		List<Departments> results = query.list();

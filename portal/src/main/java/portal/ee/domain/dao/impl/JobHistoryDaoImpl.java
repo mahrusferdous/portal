@@ -19,9 +19,11 @@ import portal.ee.domain.entity.JobHistory;
 public class JobHistoryDaoImpl implements JobHistoryDao {
 	
 	//If no autowired, it will be null
+	//this a way to inject one bean into another 
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 
+	//manages the transaction and do it all or do nothing 
 	@Transactional
 	@Override
 	public List<JobHistory> findAllJobHistory() {

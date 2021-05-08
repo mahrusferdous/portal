@@ -2,6 +2,8 @@ package portal.ee.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 public class Departments {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "DEPARTMENT_ID")
 	private int departmentId;
 	
@@ -17,10 +20,10 @@ public class Departments {
 	private String departmentName;
 	
 	@Column(name = "MANAGER_ID")
-	private int managerId;
+	private Integer managerId;
 	
 	@Column(name = "LOCATION_ID")
-	private int locationId;
+	private Integer locationId;
 
 	public int getDepartmentId() {
 		return departmentId;
@@ -38,20 +41,20 @@ public class Departments {
 		this.departmentName = departmentName;
 	}
 
-	public int getManagerId() {
+	public Integer getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
 
-	public int getLocationId() {
+	public Integer getLocationId() {
 		return locationId;
 	}
 
-	public void setLocationId(int locationId) {
+	public void setLocationId(Integer locationId) {
 		this.locationId = locationId;
 	}
-	
+
 }

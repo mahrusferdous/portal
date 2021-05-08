@@ -2,6 +2,8 @@ package portal.ee.domain.dao.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,12 @@ public class JobsDaoImpl implements JobsDao{
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 
+	@Transactional
 	@Override
 	public List<Jobs> findAllJobs() {
 		Session currentSession = hibernateTemplate.getSessionFactory().getCurrentSession();
 		
-		String sql = "select * from JOBS";
+		String sql = "select * from HR.JOBS";
 		SQLQuery query = currentSession.createSQLQuery(sql);
 		query.addEntity(Jobs.class);
 		List<Jobs> results = query.list();
